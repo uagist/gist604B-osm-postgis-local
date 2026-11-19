@@ -1,13 +1,11 @@
 {
   "name": "Python GIS + PostGIS Development",
 
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "runServices": ["app", "postgres"],
+  "workspaceFolder": "/workspaces/gist604b-osm-postgis",
+  "shutdownAction": "stopCompose",
 
   "customizations": {
     "vscode": {
@@ -19,7 +17,6 @@
         "charliermarsh.ruff",
         "ms-vscode.vscode-json",
         "redhat.vscode-yaml",
-        "ms-azuretools.vscode-docker",
         "ckolkman.vscode-postgres"
       ],
       "settings": {
@@ -35,14 +32,8 @@
   "forwardPorts": [8888, 5432],
 
   "portsAttributes": {
-    "8888": {
-      "label": "Jupyter Lab",
-      "onAutoForward": "notify"
-    },
-    "5432": {
-      "label": "PostgreSQL",
-      "onAutoForward": "notify"
-    }
+    "8888": { "label": "Jupyter Lab", "onAutoForward": "notify" },
+    "5432": { "label": "PostgreSQL", "onAutoForward": "silent" }
   },
 
   "postCreateCommand": "pip install uv && uv sync && .venv/bin/python -m ipykernel install --user --name python-gis-postgis-development --display-name \"python-gis-postgis-development (.venv)\"",
