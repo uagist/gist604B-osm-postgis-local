@@ -7,6 +7,7 @@ Repository for working with OSM spatial data using PostgreSQL and PostGIS.
     .
     ├── .devcontainer/
     │   ├── Dockerfile
+    │   ├── docker-compose.yml
     │   └── devcontainer.json
     ├── notebooks/
     │   ├── setup_osm_postgis.ipynb
@@ -20,7 +21,6 @@ Repository for working with OSM spatial data using PostgreSQL and PostGIS.
     │       └── 05_osm_county_amenity_synthesis.sql
     ├── src/
     │   └── setup_osm_postgis.py
-    ├── docker-compose.yml
     ├── pyproject.toml
     ├── uv.lock
     └── README.md
